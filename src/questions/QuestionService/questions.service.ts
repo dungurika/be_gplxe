@@ -23,12 +23,12 @@ export class QuestionsService {
   }
 
   async getQuestionByQuery(
-    topWrongQuestion: boolean,
-    type: string,
+    topWrongQuestion?: boolean,
+    type?: string,
   ): Promise<Question[]> {
     let questions = await this.questionsModel.find();
 
-    if (topWrongQuestion) {
+    if (topWrongQuestion === true) {
       questions = questions.filter(
         (question) => question.topWrongQuestion === true,
       );
