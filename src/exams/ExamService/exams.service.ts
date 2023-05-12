@@ -10,10 +10,11 @@ import { GetExamDto } from '../dto/get-exam.dto';
 export class ExamsService {
   constructor(@InjectModel('Exam') private readonly examModel: Model<Exam>) {}
 
-  async getExams(query: GetExamDto): Promise<Exam[]> {
-    if (!query.license_id) {
-      return this.examModel.find();
-    }
+  async getExams(): Promise<Exam[]> {
+    return this.examModel.find();
+  }
+
+  async getExamsByLicenseId(query: GetExamDto): Promise<Exam[]> {
     return this.examModel.find({ license_id: query.license_id });
   }
 

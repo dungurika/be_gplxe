@@ -46,3 +46,10 @@ export class CreateQuestionDto {
   @IsMongoId({ each: true })
   exam_id: ObjectId[];
 }
+
+export class PaginationQuestionDto {
+  @IsNotEmpty()
+  page: number;
+  @IsNotEmpty()
+  limit: number;
+}

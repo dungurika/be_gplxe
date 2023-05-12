@@ -1,8 +1,8 @@
-import { IsNotEmpty } from "class-validator";
+import { IsNotEmpty } from 'class-validator';
 
-export class CreateLicenseDto{
+export class CreateLicenseDto {
   @IsNotEmpty()
-  title:string;
+  title: string;
   @IsNotEmpty()
-  description:string;
+  description: string;
 }

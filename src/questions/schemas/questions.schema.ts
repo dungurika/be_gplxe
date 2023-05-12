@@ -19,7 +19,7 @@ export class Question {
   answers: string[];
 
   @Prop({ type: String, required: true })
-  correctAnswer: string;
+  correct_answer: string;
 
   @Prop({
     type: String,
@@ -35,7 +35,7 @@ export class Question {
   image?: string;
 
   @Prop({ type: Number })
-  totalTime?: number;
+  total_time?: number;
 
   @Prop({ type: [SchemaTypes.ObjectId], ref: 'Exam' })
   exam_id: ObjectId[];
@@ -44,6 +44,6 @@ export class Question {
   license_id: ObjectId[];
 
   @Prop({ type: Boolean })
-  topWrongQuestion: boolean;
+  top_wrong_question: boolean;
 }
 export const QuestionsSchema = SchemaFactory.createForClass(Question);
