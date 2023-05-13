@@ -9,9 +9,10 @@ import { QuestionsModule } from './questions/questions.module';
 import { ExamsModule } from './exams/exams.module';
 
 @Module({
-  imports: [LicenseModule,
+  imports: [
+    LicenseModule,
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGODB_URL, {
+    MongooseModule.forRoot(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }),
