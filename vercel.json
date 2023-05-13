@@ -1,8 +1,5 @@
 {
   "version": 2,
-  "env": {
-    "MONGODB_URI": "mongodb+srv://dungtran:zNu4ukfRBWvv51Hw@cluster0.q9jsctv.mongodb.net/project_gplx?retryWrites=true&w=majority"
-  },
   "builds": [
     {
       "src": "src/main.js",
