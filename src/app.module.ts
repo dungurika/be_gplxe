@@ -7,6 +7,9 @@ import { LicenseModule } from './license/license.module';
 import { TrafficSignsModule } from './traffic-signs/traffic-signs.module';
 import { QuestionsModule } from './questions/questions.module';
 import { ExamsModule } from './exams/exams.module';
+import { UsersModule } from './users/users.module';
+import { AllExceptionFilter } from "./http";
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
@@ -19,8 +22,14 @@ import { ExamsModule } from './exams/exams.module';
     TrafficSignsModule,
     QuestionsModule,
     ExamsModule,
+    UsersModule,
+    ReportsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,
+    {
+      provide: 'APP_FILTER',
+      useClass: AllExceptionFilter,
+    },],
 })
 export class AppModule {}

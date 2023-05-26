@@ -3,18 +3,19 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { TransformationInterceptor } from "./response";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe());
-
+  app.useGlobalInterceptors(new TransformationInterceptor());
   const config = new DocumentBuilder()
     .setTitle('GPLX example')
     .setDescription('GPLX API description')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/gplx', app, document);
+  SwaggerModule.setup('api', app, document);
   await app.listen(3000);
 }
 bootstrap();

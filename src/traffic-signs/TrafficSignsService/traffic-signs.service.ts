@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateTrafficSignDto } from '../dto/create-traffic-sign.dto';
 import { UpdateTrafficSignDto } from '../dto/update-traffic-sign.dto';
 import { InjectModel } from '@nestjs/mongoose';
@@ -25,7 +25,13 @@ export class TrafficSignsService {
   }
 
   async getTrafficSignsById(traffic_signs_id: string): Promise<TrafficSigns> {
-    return this.trafficSignsModel.findById(traffic_signs_id);
+    const traffic = await this.trafficSignsModel.findById(traffic_signs_id);
+    if(traffic)
+    {
+      console.log('a');
+      throw new NotFoundException('Traffics not found');
+    }
+    return traffic;
   }
 
   async createTrafficSigns(
